@@ -1,0 +1,23 @@
+# Entrada de dados
+dados <- read.csv(file = "book1.csv", header = T)
+
+# Pacotes utilizados
+library(tibble)
+install.packages("tidyverse")
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+
+# Tabela
+table(dados)
+tibble(dados)
+View(dados)
+
+# Seleção de dados 
+dads <- dados %>% 
+  select(Entity, homicide) %>% 
+  filter(Entity %in% c('Venezuela', 'Australia'))
+
+# Gráfico ggplot2
+ggplot(dads, aes(Entity, homicide)) +
+  geom_bar(stat = "identity")
